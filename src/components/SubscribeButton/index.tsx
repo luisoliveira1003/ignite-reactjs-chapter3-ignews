@@ -4,16 +4,12 @@ import { api } from "../../services/api";
 import { getStripeJs } from "../../services/stripe-js";
 import styles from "./stules.module.scss";
 
-interface SubscribeButtonProps {
-  priceId: string;
-}
-
 // Onde pode utilizar as chaves privadas
 // getServerSideProps (SSR)
 // getStaticProps (SSG)
 // API routes
 
-export function SubscribeButton({ priceId }: SubscribeButtonProps) {
+export function SubscribeButton() {
   const [session] = useSession();
   const router = useRouter();
 
@@ -23,8 +19,8 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
       return;
     }
 
-    if(session.activeSubscription) {
-      router.push('/posts');
+    if (session.activeSubscription) {
+      router.push("/posts");
       return;
     }
 
